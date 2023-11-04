@@ -11,5 +11,5 @@
 
 ## Run Commands
 
-- tcs filename.ts
-- node filename.js
+- `tcs filename.ts` to compile
+- `node filename.js` to execute
