@@ -10,6 +10,6 @@
 
 
 ## Run Commands
-
+- Go to the correct folder by doing `cd folderName`
 - `tcs filename.ts` to compile
 - `node filename.js` to execute
