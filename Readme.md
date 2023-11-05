@@ -13,3 +13,5 @@
 - Go to the correct folder by doing `cd folderName`
 - `tcs filename.ts` to compile
 - `node filename.js` to execute
+
+- If you are using windows and an error stating 'running scripts is disabled' enter the below command in powershell (Run as admin) - Enter this command `Set-ExecutionPolicy RemoteSigned`
