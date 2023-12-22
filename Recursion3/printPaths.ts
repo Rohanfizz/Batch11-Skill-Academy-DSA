@@ -6,9 +6,11 @@ function printPaths(i:number,j:number,n:number,m:number,psf:string){
     }
 
     //If i try to go horizontally
-    printPaths(i,j+1,n,m,psf+"H");
+    let hori = psf +"H"
+    let verti =psf+"V";
+    printPaths(i,j+1,n,m,hori);
     //If i try to go vertically
-    printPaths(i+1,j,n,m,psf+"V");
+    printPaths(i+1,j,n,m,verti);
 }
 
 printPaths(1,1,3,4,"")
