@@ -104,11 +104,48 @@ class LinkedList {
         return temp;
     };
 
-    getAt = (idx:number):number =>{
+    getAt = (idx: number): number => {
         if (idx < 0 || idx >= this.size) return -1;
         let node = this.getNodeAt(idx);
         return node.val;
-    }
+    };
+
+    removeAt = (idx: number): number => {
+        if (idx < 0 || idx >= this.size) {
+            console.log("Invalid index!");
+            return -1;
+        } else if (idx == 0) {
+            return this.removeFirst();
+        } else if (idx == this.size - 1) {
+            return this.removeLast();
+        }
+        let prevNode: any = this.getNodeAt(idx - 1);
+        let retVal = prevNode?.next?.val;
+        prevNode.next = prevNode?.next?.next;
+        this.size--;
+        return retVal;
+    };
+
+    addAt = (idx: number, value: number): void => {
+        if (idx < 0 || idx >= this.size) {
+            console.log("Invalid Index!");
+            return;
+        } else if (idx == 0) {
+            this.addFirst(value);
+            return;
+        } else if (idx == this.size - 1) {
+            this.addLast(value);
+            return;
+        }
+        let newNode = new ListNode(value);
+        let prevNode: any = this.getNodeAt(idx - 1);
+        let nextNode = prevNode.next;
+
+        prevNode.next = newNode;
+        newNode.next = nextNode;
+
+        this.size++;
+    };
 }
 
 let ll = new LinkedList();
@@ -118,11 +155,8 @@ ll.addLast(30); // 10 20 30
 ll.addFirst(40); //40 10 20 30
 ll.removeFirst(); //10 20 30
 ll.addFirst(100); //100 10 20 30
-ll.removeLast();
-ll.print(); //100 10 20
-console.log(ll.getAt(1));
-
-console.log(ll.getSize()); //4
+ll.addAt(1,200)
+ll.print(); //100 200 10 20 30
 
 // class  Human{
 //     weight: number;

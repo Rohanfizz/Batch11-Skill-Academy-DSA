@@ -97,6 +97,44 @@ var LinkedList = /** @class */ (function () {
             var node = _this.getNodeAt(idx);
             return node.val;
         };
+        this.removeAt = function (idx) {
+            var _a, _b;
+            if (idx < 0 || idx >= _this.size) {
+                console.log("Invalid index!");
+                return -1;
+            }
+            else if (idx == 0) {
+                return _this.removeFirst();
+            }
+            else if (idx == _this.size - 1) {
+                return _this.removeLast();
+            }
+            var prevNode = _this.getNodeAt(idx - 1);
+            var retVal = (_a = prevNode === null || prevNode === void 0 ? void 0 : prevNode.next) === null || _a === void 0 ? void 0 : _a.val;
+            prevNode.next = (_b = prevNode === null || prevNode === void 0 ? void 0 : prevNode.next) === null || _b === void 0 ? void 0 : _b.next;
+            _this.size--;
+            return retVal;
+        };
+        this.addAt = function (idx, value) {
+            if (idx < 0 || idx >= _this.size) {
+                console.log("Invalid Index!");
+                return;
+            }
+            else if (idx == 0) {
+                _this.addFirst(value);
+                return;
+            }
+            else if (idx == _this.size - 1) {
+                _this.addLast(value);
+                return;
+            }
+            var newNode = new ListNode(value);
+            var prevNode = _this.getNodeAt(idx - 1);
+            var nextNode = prevNode.next;
+            prevNode.next = newNode;
+            newNode.next = nextNode;
+            _this.size++;
+        };
         this.head = null;
         this.tail = null;
         this.size = 0;
@@ -110,13 +148,8 @@ ll.addLast(30); // 10 20 30
 ll.addFirst(40); //40 10 20 30
 ll.removeFirst(); //10 20 30
 ll.addFirst(100); //100 10 20 30
-ll.removeLast();
-ll.removeLast();
-ll.removeLast();
-ll.removeLast();
-ll.removeLast();
-ll.print(); //100 10 20
-console.log(ll.getSize()); //4
+ll.addAt(1, 200);
+ll.print(); //100 200 10 20 30
 // class  Human{
 //     weight: number;
 //     name : string;
